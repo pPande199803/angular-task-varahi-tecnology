@@ -1,0 +1,113 @@
+<div class="conatiner-fluid">
+    <!-- login form code  -->
+    <div class="loginform" *ngIf="loginDisable">
+        <form [formGroup]="loginForm">
+            <div class="title">
+                <h4>User Login Form</h4>
+                <hr>
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" placeholder="Enter Username Here.."
+                    formControlName="userName" required>
+                    <span class="text-danger" *ngIf="l['userName'].touched && l['userName'].invalid">
+                       UserName Required.
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="text" class="form-control" placeholder="Enter Password Here.."
+                    formControlName="password" required>
+                    <span class="text-danger" *ngIf="l['userName'].touched && l['userName'].invalid">
+                        Password Required.
+                    </span>
+                </div>
+            </div>
+            <div class="register-user">
+                <a (click)="showRegisterForm()">Register New User..?</a>
+            </div>
+            <div class="button d-grid col-12 mx-auto">
+                <button class="btn btn-primary" (click)="loginUser()" [disabled]="loginForm.invalid">LogIn</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+    <!-- register form code  -->
+
+
+
+    <div class="registerForm" *ngIf="registerDisable">
+        <form [formGroup]="registerForm">
+            <div class="title">
+                <h4>User Register Form</h4>
+                <hr>
+                <div class="mb-3">
+                    <label class="form-label">First Name</label>
+                    <input type="text" class="form-control" placeholder="Enter First Name Here.."
+                    formControlName="firstName" required>
+                    <span class="text-danger" *ngIf="r['firstName'].touched && r['firstName'].invalid">
+                        First Name Required.
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Last Name Here.."
+                    formControlName="lastName" required>
+                    <span class="text-danger" *ngIf="r['lastName'].touched && r['lastName'].invalid">
+                        Last Name Required.
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="trxt" class="form-control" placeholder="Enter Username Here.."
+                    formControlName="userName" required>
+                    <span class="text-danger" *ngIf="r['userName'].touched && r['userName'].invalid">
+                        UserName Required.
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="text" class="form-control" placeholder="Enter Password here.."
+                    formControlName="password" required>
+                    <span class="text-danger" *ngIf="r['firstName'].touched && r['firstName'].invalid">
+                        Password Required.
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                   <div class="row">
+                    <div class="form-check col-2">
+                        <input class="form-check-input" type="radio" value="admin"  formControlName="role"
+                        required>
+                        <span class="text-danger" *ngIf="r['role'].touched && r['role'].invalid">
+                            Role Required.
+                        </span>
+                        <label class="form-check-label">
+                            Admin
+                        </label>
+                    </div>
+                    <div class="form-check col-2">
+                        <input class="form-check-input" type="radio" value="user" formControlName="role">
+                        <label class="form-check-label">
+                            User
+                        </label>
+                    </div>
+                   </div>
+                </div>
+            </div>
+            <div class="register-user">
+                <a (click)="showLoginForm()">Already have an account..?</a>
+            </div>
+            <div class="button d-grid col-12 mx-auto">
+                <button class="btn btn-warning" (click)="userRegister()" [disabled]="registerForm.invalid">Register</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+</div>

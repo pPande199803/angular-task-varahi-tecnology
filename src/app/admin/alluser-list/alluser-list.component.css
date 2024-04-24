@@ -1,0 +1,30 @@
+.allUser-table h4{
+    text-align: center;
+}
+
+.allUser-table{
+    width: 90%;
+    margin: 2% auto;
+}
+.add-user{
+    float: right;
+    padding: 10px;
+}
+span{
+    cursor: pointer;
+}
+
+table td, tr{
+    text-align: center;
+}
+.pagination{
+    float: right;
+}
+input.ng-invalid.ng-touched{
+    border:1px solid  red ;
+}
+.no-record{
+    text-align: center;
+    font-weight: bold;
+
+}

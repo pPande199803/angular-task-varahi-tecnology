@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="user-data">
+        <div class="idEdit">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" #isEdit value="checked" id="toggle" (change)="isValueEdit(isEdit)">
+                <label class="form-check-label">Update User Toggle</label>
+              </div>
+              <hr>
+        </div>
+        <h5>View Profile</h5>
+        <hr>
+        <form [formGroup]="userFormData">
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-2">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control"
+                        [readOnly]="isEditValue" formControlName="firstName">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-2">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" 
+                        [readOnly]="isEditValue" formControlName="lastName">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-2">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control"  
+                        [readOnly]="isEditValue" formControlName="userName">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-2">
+                        <label class="form-label">Password</label>
+                        <input type="text" class="form-control" 
+                        [readOnly]="isEditValue" formControlName="password">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-2">
+                        <label class="form-label">Role</label>
+                        <div class="row mx-auto">
+                            <div class="form-check col-3">
+                                <input class="form-check-input" type="radio"  value="admin"
+                                  formControlName="role" >
+                                <label class="form-check-label">
+                                    Admin
+                                </label>
+                            </div>
+                            <div class="form-check col-2">
+                                <input class="form-check-input" type="radio"  value="user"
+                                 formControlName="role" checked>
+                                <label class="form-check-label">
+                                    User
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </form>
+        <div class="button d-grid col-6 mx-auto mt-2" *ngIf="updateButton">
+            <button class="btn btn-warning" (click)="updateUserData()">Update</button>
+        </div>
+    </div>
+</div>

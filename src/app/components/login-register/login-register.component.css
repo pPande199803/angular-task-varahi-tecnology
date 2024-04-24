@@ -1,0 +1,48 @@
+.loginform{
+    width: 40%;
+    margin: 6% auto;
+    border: 1px solid gray;
+    padding: 30px;
+}
+.loginform h4{
+    text-align: center;
+}
+.register-user a{
+    float: right;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+.register-user a:hover{
+    color: darkblue;
+}
+.form-control{
+    font-size: 21px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.form-control:focus{
+    box-shadow: none;
+}
+
+.button button{
+    margin-top: 10px;
+}
+
+
+
+/* register form  */
+
+.registerForm{
+    width: 40%;
+    margin: 1% auto;
+    border: 1px solid gray;
+    padding: 30px;
+}
+.registerForm h4{
+    text-align: center;
+}
+
+input.ng-invalid.ng-touched{
+    border:1px solid  red ;
+}

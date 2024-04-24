@@ -1,0 +1,13 @@
+.user-data{
+    margin: 6% auto;
+    width: 70%;
+    border: 1px solid rgb(180, 180, 180);
+    padding: 20px;
+}
+
+.user-data h5{
+    text-align: center;
+}
+.idEdit{
+    float: right;
+}

@@ -1,0 +1,131 @@
+<div class="container-fluid">
+    <div class="allUser-table">
+        <h4>User Table Data</h4>
+        <hr>
+        <div class="add-user">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getAllFields()">Add User</button>
+        </div>
+        <table class="table table-bordered" *ngIf="users.length !== 0">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">UserName</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: p }; let i = index ">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.userName}}</td>
+                    <td>{{user.password}}</td>
+                    <td>{{user.role}}</td>
+                    <td>
+                        <span (click)="editUser(user)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pencil text-primary mx-2"></i></span>
+                        <span (click)="deleteUser(user.id)"><i class="fa fa-trash text-danger mx-2"></i></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination" *ngIf="users.length !== 0">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+
+    <!-- no data to show  -->
+
+    <ng-container *ngIf="users.length == 0">
+        <span class="no-record">No Recored Found</span>
+    </ng-container>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- modal for add and update user  -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="userForm">
+                    <div class="mb-3">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" placeholder="Enter First Name Here.."
+                            formControlName="firstName" required>
+                            <span class="text-danger" *ngIf="f['firstName'].touched && f['firstName'].invalid">
+                                First Name Required.
+                            </span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Last Name Here.."
+                            formControlName="lastName" required>
+                            <span class="text-danger" *ngIf="f['firstName'].touched && f['firstName'].invalid">
+                                Last Name Required.
+                            </span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="trxt" class="form-control" placeholder="Enter Username Here.."
+                            formControlName="userName" required>
+                            <span class="text-danger" *ngIf="f['firstName'].touched && f['firstName'].invalid">
+                                UserName Required.
+                            </span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="text" class="form-control" placeholder="Enter Password here.."
+                            formControlName="password" required>
+                            <span class="text-danger" *ngIf="f['firstName'].touched && f['firstName'].invalid">
+                                Password Required.
+                            </span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <div class="row">
+                            <div class="form-check col-2">
+                                <input class="form-check-input" type="radio" value="admin"
+                                    formControlName="role" required>
+                                    <span class="text-danger" *ngIf="f['role'].touched && f['role'].invalid">
+                                        Role Required.
+                                    </span>
+                                <label class="form-check-label">
+                                    Admin
+                                </label>
+                            </div>
+                            <div class="form-check col-2">
+                                <input class="form-check-input" type="radio" value="user"
+                                    formControlName="role">
+                                <label class="form-check-label">
+                                    User
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <button type="button" class="btn btn-primary" (click)="createNewUser()" *ngIf="loginButton" [disabled]="userForm.invalid">Create New User</button>
+                <button type="button" class="btn btn-warning" (click)="updateUserData()" *ngIf="updateButton">Update User</button>
+            </div>
+        </div>
+    </div>
+</div>
